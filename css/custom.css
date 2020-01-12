@@ -1,0 +1,47 @@
+/* your styles go here */
+#closeSlaveViewPort {
+  position:absolute;
+  right:20px;
+  top:2px;
+  cursor:pointer;
+}
+
+#closeSlaveViewPort:hover {
+  color: #FFF;
+}
+
+form.slaveViewPortForm {
+    display: inline;
+}
+
+button#custom {
+  height: 30px;
+  padding-top: 1px;
+  margin-right: 3px;
+  background-color: #37cfdc;
+  border-color: #37cfdc;
+}
+
+button#custom_on {
+  height: 30px;
+  padding-top: 1px;
+  margin-right: 3px;
+  background-color: green;
+  border-color: green;
+}
+
+button#custom_off {
+  height: 30px;
+  padding-top: 1px;
+  margin-right: 3px;
+  background-color: red;
+  border-color: red;
+}
+
+button#custom:hover {
+  background-color: #23bcc9;
+  border-color: #21b2bf;
+}
+i.slaveHeader {
+  color: #fff;
+}
