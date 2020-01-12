@@ -10,6 +10,8 @@ Instalation Instructions
 
 There will be a link to the js server file you can include in a web page if you want to monitor visitors, and there will also be a link in the panel to download an automatically created universal browser plugin which you can load into Chrome, Firefox, or Edge to control.
 
+Also note that this utilizes long polling for communication between server and panel, so commands can take as long as 30 seconds to become active once sent.
+
 DISCLAIMER
 ----------
 Be responsible, because I take no responsibility for the misuse of this software.
