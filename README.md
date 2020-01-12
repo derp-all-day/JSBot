@@ -12,4 +12,4 @@ There will be a link to the js server file you can include in a web page if you 
 
 DISCLAIMER
 ----------
-Be responsible, because I take no responsibility for the misuse of JSBot.
+Be responsible, because I take no responsibility for the misuse of this software.
