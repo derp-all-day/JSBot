@@ -4,7 +4,7 @@ A javascript based botnet/C&amp;C to remotely manage/control browsers.
 
 Instalation Instructions
 ------------------------
-1. Upload the filed to your domain you plan to use to host the panel
+1. Upload the files to your domain you plan to use to host the panel
 2. Run and go through the steps in ``install.php`` (Note, no need to create an SQL database or anything of the like as this is powered by PHD)
 3. After that, delete the ``install.php`` file, and log into your panel.
 
