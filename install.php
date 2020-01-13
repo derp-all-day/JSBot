@@ -1,11 +1,11 @@
 <?php
-if(file_exists('sys/head.php') && $_GET['step'] != '3') {
+if(file_exists('sys/head.php')) {
   echo 'It seems JSBot has already been installed. Please delete this file or remove the database as well as the "sys/head.php" file if you wish to re-install.';
   die();
 }
 $get  = (object) $_GET;
 $post = (object) $_POST;
-if(!isset($get->step) || empty($get->step) || !in_array($get->step, array('1', '2', '3'))) {
+if(!isset($get->step) || empty($get->step) || !in_array($get->step, array('1', '2'))) {
   header('location: install.php?step=1');
 }
 if($get->step == '1') {
