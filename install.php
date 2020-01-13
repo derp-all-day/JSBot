@@ -10,7 +10,7 @@ if(!isset($get->step) || empty($get->step) || !in_array($get->step, array('1', '
 }
 if($get->step == '1') {
   ?>
-  <b>[1/3]</b> First, lets create the database (No SQL Required).<hr />
+  <b>[1/2]</b> First, lets create the database (No SQL Required).<hr />
   <form action="install.php?step=2" method="post">
     DB Name: <input type="text" name="db" placeholder="Database name..." required /><br />
     DB User: <input type="text" name="user" placeholder="Database username..." required /><br />
@@ -112,7 +112,7 @@ gfDrh.appendChild(hjZuf);
   file_put_contents('extension/server.js', $serverjs);
 }
 ?>
-<b>[3/3]</b> Instalation completed!<hr />
+<b>[2/2]</b> Instalation completed!<hr />
 Please delete this file now, and continue to <a href="./">Your Panel</a>. :)
 <?php } ?>
 <style>
