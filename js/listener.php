@@ -10,7 +10,7 @@ function out($js) {
 ob_start("out");
 ?>
 /*
- * JSRat
+ * JSBot
  * By: Andrew Blalock (https://github.com/derp-all-day)
  */
 //<script>
