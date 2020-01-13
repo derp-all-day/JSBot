@@ -91,7 +91,6 @@ $p_url = strtolower(explode('/', $_SERVER['SERVER_PROTOCOL'])[0]).'://'.$_SERVER
       </div>
     </div>
     <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/chart.js/Chart.min.js"></script>
     <script src="js/jquery.form.js"></script>
     <script src="js/ajax.js?cb=<?=rand(1,999);?>"></script>
     <script>
