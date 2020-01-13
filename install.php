@@ -7,6 +7,7 @@ $get  = (object) $_GET;
 $post = (object) $_POST;
 if(!isset($get->step) || empty($get->step) || !in_array($get->step, array('1', '2'))) {
   header('location: install.php?step=1');
+  die();
 }
 if($get->step == '1') {
   ?>
