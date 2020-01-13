@@ -17,3 +17,10 @@ Also note that this utilizes long polling for communication between server and p
 DISCLAIMER
 ----------
 Be responsible, because I take no responsibility for the misuse of this software.
+
+
+UPDATES PLANNED FOR FUTURE RELEASES
+-----------------------------------
+- [ ] use of websockets instead of long polling
+- [ ] catch an report url state changes made through ajax
+- [ ] Plugin system
