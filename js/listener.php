@@ -37,10 +37,12 @@ let jsr = {
     jsr.recv = setInterval(jsr.getcmd, 30000);
     jsr.cnct = setInterval(jsr.hello, 60000);
     jsr.pageChange();
+    window.addEventListener('popstate', jsr.hello);
   }),
   stop: (function(){
     clearInterval(jsr.recv);
     clearInterval(jsr.cnct);
+    window.removeEventListener('popstate', jsr.hello);
     console.log("[SESSION STOP]");
   }),
   getcmd: (function(){
