@@ -93,7 +93,6 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
     </div>
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="vendor/chart.js/Chart.min.js"></script>
     <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
     <script src="js/front.js"></script>
   </body>
