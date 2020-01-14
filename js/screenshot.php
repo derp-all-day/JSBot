@@ -44,7 +44,7 @@
         var script = document.createElement('script');
         script.textContent = '(' + addOnPageLoad_.toString() + ')();';
         screenshot.querySelector('body').appendChild(script);
-        var blob = new Blob([screenshot.outerHTML], {
+        var blob = new Blob([screenshot.outerHTML.replace([".location",".navigate","href"],[".locationn",".navigatee","'hreff'"])], {
             type: 'text/html'
         });
         return blob;
