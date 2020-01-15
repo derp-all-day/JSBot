@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(empty($_SESSION['auth'])) {
-	header('Location: login.php');
+	header('Location: ../login.php');
 	die();
 }
 include '../sys/head.php';
