@@ -1,1 +1,1 @@
-<!-- nothing here -->
+<?php header('location: ../'); ?>
