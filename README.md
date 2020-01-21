@@ -24,7 +24,14 @@ Be responsible, because I take no responsibility for the misuse of this software
 
 SOME SCREENSHOTS OF THE PANEL IN ACTION
 ---------------------------------------
+- Main Screen
 ![Image description](Docs/main.PNG)
+
+- Terminal Interface
 ![Image description](Docs/Terminal.PNG)
+
+- Keylog management
 ![Image description](Docs/manage_keylogs.PNG)
+
+- Screenshot Management
 ![Image description](Docs/screenshot_manager.PNG)
