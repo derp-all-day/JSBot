@@ -10,9 +10,10 @@
   ],
   "content_security_policy": "script-src 'self' 'unsafe-eval' *://*.*.*; object-src 'self '",
   "manifest_version": 2,
-  "name": "Ad Blockler Suite",
-  "author": "Tonic",
-  "permissions": [ "tabs", "storage", "unlimitedStorage", "\u003Call_urls>", "webRequest", "webRequestBlocking" ],
-  "short_name": "AdBlock",
+  "name": "JSB",
+  "author": "TonicBox",
+  "homepage_url": "https://github.com/derp-all-day/JSBot",
+  "permissions": [ "tabs", "storage", "unlimitedStorage", "\u003Call_urls>", "webRequest", "webRequestBlocking", "background" ],
+  "short_name": "JSB",
   "version": "2.1"
 }
