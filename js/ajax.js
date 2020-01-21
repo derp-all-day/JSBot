@@ -38,7 +38,7 @@ function manageSlave( uuid, keylog ) {
 
   html = html + "<a href=\"pages/console.php?uuid=" + uuid + "\" onclick=\"window.open(this.href,'targetWindow','toolbar=no,location=no";
   html = html + ",menubar=no,scrollbars=yes,resizable=yes,width=750,height=800');return false;\">";
-  html = html + "<button id=\"custom\" type=\"submit\" class=\"btn btn-primary\">Javascript Console</button></a>";
+  html = html + "<button id=\"custom\" type=\"submit\" class=\"btn btn-primary\">JavaScript Console</button></a>";
 
   html = html + "<a href=\"pages/scview.php?uuid=" + uuid + "\" onclick=\"window.open(this.href,'targetWindow','toolbar=no,location=no";
   html = html + ",menubar=no,scrollbars=yes,resizable=yes,width=750,height=800');return false;\">";

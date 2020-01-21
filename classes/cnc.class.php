@@ -61,9 +61,16 @@ class cnc
   //fetch console data
   private function getconsole($db, $cmd, $uuid, $arg ) {
     if($row = $db->table('console')->find('uuid', $uuid, 1)->get()) {
+      $db->table('console')->find('uuid', $uuid)->change('log', '[x]');
+      if($row[array_key_first($row)]['log'] != '[x]') {
+        $table = $db->table('cnc')->get();
+        foreach($table as $key => $val) {
+  		    $db->table('cnc')->id($key)->delete();
+  	    }
+      }
       return $row[array_key_first($row)]['log'];
     } else {
-      return "[NO DATA YET]";
+      return "[x]";
     }
   }
 

