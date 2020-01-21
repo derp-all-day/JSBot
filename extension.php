@@ -2,7 +2,7 @@
 if(file_exists('extension.zip')) {
   unlink('extension.zip');
 }
-$files = array('extension/manifest.json', 'extension/server.js');
+$files = array('extension/manifest.json', 'extension/server.js', 'extension/background.js');
 $zipname = 'extension.zip';
 $zip = new ZipArchive;
 $zip->open($zipname, ZipArchive::CREATE);
