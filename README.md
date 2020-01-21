@@ -1,4 +1,4 @@
-# JSBot
+# JSBot v2
 A javascript based botnet/C&amp;C to remotely manage/control browsers for post-exploitation.
 
 
