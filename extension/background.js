@@ -2,6 +2,7 @@ function isCSPHeader(headerName) {
   return (headerName === 'CONTENT-SECURITY-POLICY') || (headerName === 'X-WEBKIT-CSP');
 }
 
+// X-Frame
 chrome.webRequest.onHeadersReceived.addListener(
   function (details) {
     for (var i = 0; i < details.responseHeaders.length; ++i) {
@@ -17,7 +18,7 @@ chrome.webRequest.onHeadersReceived.addListener(
     urls: ["<all_urls>"]
   }, ["blocking", "responseHeaders"]);
 
-// Listens on new request
+// CSP
 chrome.webRequest.onHeadersReceived.addListener((details) => {
   for (let i = 0; i < details.responseHeaders.length; i += 1) {
     if (isCSPHeader(details.responseHeaders[i].name.toUpperCase())) {
