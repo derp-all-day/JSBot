@@ -12,7 +12,7 @@ function out($js) {
   $js = str_replace('  ', ' ', $js);
   return $js;
 }
-//ob_start("out");
+ob_start("out");
 ?>
 /*
  * JSBot
